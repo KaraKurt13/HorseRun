@@ -10,7 +10,10 @@ namespace Assets.Scripts.Main
     {
         public GameStateMachine(AllServices services, Engine engine)
         {
-
+            AddState(typeof(GameEnterState), new GameEnterState(services, this));
+            AddState(typeof(GameLoopState), new GameLoopState(services, this)); 
+            AddState(typeof(GameEndingState), new GameEndingState(services));
+            Enter<GameEnterState>();
         }
     }
 }
