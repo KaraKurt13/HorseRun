@@ -34,6 +34,7 @@ namespace Assets.Scripts.Main
 
         private void RegisterServices()
         {
+            _services = AllServices.Container;
             RegisterCameraService();
             RegisterRaceService();
             RegisterUIService();
