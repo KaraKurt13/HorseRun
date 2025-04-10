@@ -14,6 +14,8 @@ namespace Assets.Scripts.Main
 
         public void EndRace();
 
+        public List<Horse> Horses { get; set; }
+
         public Horse SelectedHorse { get; set; }
     }
 
@@ -25,8 +27,11 @@ namespace Assets.Scripts.Main
 
         public Horse SelectedHorse { get; set; }
 
+        public List<Horse> Horses { get; set; }
+
         public void InitializeRace()
         {
+            Horses = new();
             for (int i = 0; i < 5; i++)
             {
                 var spawnPoint = _spawnPoints[i].position;
@@ -35,6 +40,7 @@ namespace Assets.Scripts.Main
                 horse.Initialize(endingPoint, spawnPoint);
                 horse.Activate();
                 SelectedHorse = horse;
+                Horses.Add(horse);
             }
             // Spawn horses, randomize their stats
         }
