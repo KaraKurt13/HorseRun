@@ -29,6 +29,7 @@ namespace Assets.Scripts.Main
         [SerializeField] private List<Transform> _endingPoints;
         [SerializeField] private GameObject _horsePrefab;
         [SerializeField] private List<Material> _horseMaterials;
+        [SerializeField] private List<Sprite> _horseImages;
 
         private readonly List<string> _horseNames = new List<string>() 
         {
@@ -48,18 +49,22 @@ namespace Assets.Scripts.Main
                 var endingPoint = _endingPoints[i].position;
                 var name = _horseNames[i];
                 var material = _horseMaterials[i];
+                var image = _horseImages[i];
                 var horse = Instantiate(_horsePrefab, spawnPoint, Quaternion.identity).GetComponent<Horse>();
-                horse.Initialize(endingPoint, spawnPoint, name, material);
-                horse.Activate();
-                SelectedHorse = horse;
+                horse.Initialize(endingPoint, spawnPoint, name, material, image);
                 Horses.Add(horse);
             }
-            // Spawn horses, randomize their stats
+        }
+
+        public void SetHorseBet(Horse horse)
+        {
+            SelectedHorse = horse;
         }
 
         public void StartRace()
         {
-
+            foreach (var horse in Horses)
+                horse.Activate();
         }
 
         public void EndRace()

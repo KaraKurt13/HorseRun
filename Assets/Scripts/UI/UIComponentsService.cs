@@ -22,28 +22,38 @@ namespace Assets.Scripts.UI
 
     public class UIComponentsService : MonoBehaviour, IUIComponentsService
     {
+        [SerializeField] private BetPanelComponent _betPanelComponent;
+        [SerializeField] private RacePanelComponent _racePanelComponent;
+        [SerializeField] private GameResultsComponent _gameResultsComponent;
+
         public void DrawBetPanel()
         {
+            _betPanelComponent.Draw();
         }
 
         public void DrawRacePanel()
         {
+            _racePanelComponent.Draw();
         }
 
         public void DrawResultScreen()
         {
+            _gameResultsComponent.Draw();
         }
 
         public void HideBetPanel()
         {
+            _betPanelComponent.Hide();
         }
 
         public void HideRacePanel()
         {
+            _racePanelComponent.Hide();
         }
 
         public void HideResultScreen()
         {
+            _gameResultsComponent.Hide();
         }
     }
 }

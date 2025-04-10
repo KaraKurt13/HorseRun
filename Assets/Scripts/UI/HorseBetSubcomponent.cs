@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class HorseBetSubcomponent : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class HorseBetSubcomponent : MonoBehaviour
     {
-        
-    }
+        public TextMeshProUGUI NameText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Image Image;
+
+        public Button SelectButton;
     }
 }

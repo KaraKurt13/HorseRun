@@ -18,6 +18,8 @@ namespace Assets.Scripts.Objects
 
         public string Name { get; private set; }
 
+        public Sprite Image { get; private set; }
+
         public float NormalizedRaceProgress 
         {
             get
@@ -34,7 +36,7 @@ namespace Assets.Scripts.Objects
 
         private bool _isActive = false;
 
-        public void Initialize(Vector3 targetPosition, Vector3 spawnPosition, string name, Material meshMaterial)
+        public void Initialize(Vector3 targetPosition, Vector3 spawnPosition, string name, Material meshMaterial, Sprite image)
         {
             _targetPosition = targetPosition;
             _startPosition = spawnPosition;
@@ -42,6 +44,7 @@ namespace Assets.Scripts.Objects
             _totalDistance = Vector3.Distance(_startPosition, _targetPosition);
             _ticksTillSpeedChange = TimeHelper.SecondsToTicks(Random.Range(1f, 3f));
             Name = name;
+            Image = image;
             MeshRenderer.material = meshMaterial;
         }
 

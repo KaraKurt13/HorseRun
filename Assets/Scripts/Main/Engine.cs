@@ -12,6 +12,16 @@ namespace Assets.Scripts.Main
 
         private GameStateMachine _gameStateMachine;
 
+        public void StartGame()
+        {
+            _gameStateMachine.Enter<GameLoopState>();
+        }
+
+        public void EndGame()
+        {
+            _gameStateMachine.Enter<GameEndingState>();
+        }
+
         private void Awake()
         {
             RegisterServices();
