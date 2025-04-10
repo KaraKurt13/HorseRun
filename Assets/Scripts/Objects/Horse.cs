@@ -12,7 +12,11 @@ namespace Assets.Scripts.Objects
     {
         public Animator Animator;
 
+        public SkinnedMeshRenderer MeshRenderer;
+
         public Transform Transform, CameraFollowPoint;
+
+        public string Name { get; private set; }
 
         public float NormalizedRaceProgress 
         {
@@ -30,13 +34,15 @@ namespace Assets.Scripts.Objects
 
         private bool _isActive = false;
 
-        public void Initialize(Vector3 targetPosition, Vector3 spawnPosition)
+        public void Initialize(Vector3 targetPosition, Vector3 spawnPosition, string name, Material meshMaterial)
         {
             _targetPosition = targetPosition;
             _startPosition = spawnPosition;
             _moveSpeed = _basicMoveSpeed;
             _totalDistance = Vector3.Distance(_startPosition, _targetPosition);
             _ticksTillSpeedChange = TimeHelper.SecondsToTicks(Random.Range(1f, 3f));
+            Name = name;
+            MeshRenderer.material = meshMaterial;
         }
 
         public void Activate()

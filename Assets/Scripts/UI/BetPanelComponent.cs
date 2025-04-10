@@ -1,3 +1,4 @@
+using Assets.Scripts.Main;
 using Assets.Scripts.UI.Infrastructure;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ namespace Assets.Scripts.UI
 {
     public class BetPanelComponent : ComponentBase
     {
+        [SerializeField] private IRaceService _raceService;
+
         public override void Draw()
         {
             base.Draw();

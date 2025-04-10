@@ -21,13 +21,23 @@ namespace Assets.Scripts.Main
 
     public class RaceService : MonoBehaviour, IRaceService
     {
-        [SerializeField] private List<Transform> _spawnPoints;
-        [SerializeField] private List<Transform> _endingPoints;
-        [SerializeField] private GameObject _horsePrefab;
-
         public Horse SelectedHorse { get; set; }
 
         public List<Horse> Horses { get; set; }
+
+        [SerializeField] private List<Transform> _spawnPoints;
+        [SerializeField] private List<Transform> _endingPoints;
+        [SerializeField] private GameObject _horsePrefab;
+        [SerializeField] private List<Material> _horseMaterials;
+
+        private readonly List<string> _horseNames = new List<string>() 
+        {
+            "Dust Runner",
+            "Stormhoof",
+            "Velvet Blaze",
+            "Iron Comet",
+            "Shadowstride"
+        };
 
         public void InitializeRace()
         {
@@ -36,8 +46,10 @@ namespace Assets.Scripts.Main
             {
                 var spawnPoint = _spawnPoints[i].position;
                 var endingPoint = _endingPoints[i].position;
+                var name = _horseNames[i];
+                var material = _horseMaterials[i];
                 var horse = Instantiate(_horsePrefab, spawnPoint, Quaternion.identity).GetComponent<Horse>();
-                horse.Initialize(endingPoint, spawnPoint);
+                horse.Initialize(endingPoint, spawnPoint, name, material);
                 horse.Activate();
                 SelectedHorse = horse;
                 Horses.Add(horse);

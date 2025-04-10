@@ -24,7 +24,6 @@ namespace Assets.Scripts.Main
         {
             _raceService.InitializeRace();
             _uiComponentsService.DrawBetPanel();
-            _stateMachine.Enter<GameLoopState>();
         }
 
         public void Exit()

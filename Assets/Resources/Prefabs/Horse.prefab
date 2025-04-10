@@ -125,8 +125,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 2394001423841282017}
+  MeshRenderer: {fileID: 2394001423837116705}
   Transform: {fileID: 2394001423831410769}
   CameraFollowPoint: {fileID: 8659990352268405413}
+--- !u!137 &2394001423837116705 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: 5de336cbe14b6ac4d9dce20bba19cfcc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2394001423831806593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &2394001423841282017 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 5de336cbe14b6ac4d9dce20bba19cfcc,

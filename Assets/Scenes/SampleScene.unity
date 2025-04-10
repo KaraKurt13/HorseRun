@@ -1598,6 +1598,12 @@ MonoBehaviour:
   - {fileID: 112998552}
   _horsePrefab: {fileID: 2394001423831905393, guid: 8e831849c2a3570499ab121fc0d3d9fa,
     type: 3}
+  _horseMaterials:
+  - {fileID: 2100000, guid: 62e7c512dd985c647b6d419f2faa8696, type: 2}
+  - {fileID: 2100000, guid: e12c5adfe63dfa54d8d0e673e229aa9c, type: 2}
+  - {fileID: 2100000, guid: 05fc7648a3701b34fae2539618842255, type: 2}
+  - {fileID: 2100000, guid: 6f11cfe51b9f9b441a51a024d21eb80c, type: 2}
+  - {fileID: 2100000, guid: 9b15b2e8ff4fad04abc15fb3dbcc9db8, type: 2}
 --- !u!1 &1531023447
 GameObject:
   m_ObjectHideFlags: 0
