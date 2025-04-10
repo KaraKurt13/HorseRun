@@ -33,6 +33,7 @@ namespace Assets.Scripts.Main
 
         public void Exit()
         {
+            _uiComponentsService.HideRacePanel();
         }
 
         public void PhysicsUpdate()

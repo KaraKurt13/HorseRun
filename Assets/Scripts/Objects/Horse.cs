@@ -1,4 +1,5 @@
 using Assets.Scripts.Helpers;
+using Assets.Scripts.Main;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,8 @@ namespace Assets.Scripts.Objects
 {
     public class Horse : MonoBehaviour
     {
+        public RaceService RaceService;
+
         public Animator Animator;
 
         public SkinnedMeshRenderer MeshRenderer;
@@ -63,7 +66,11 @@ namespace Assets.Scripts.Objects
         private void FixedUpdate()
         {
             if (_isActive)
+            {
                 Move();
+                if (NormalizedRaceProgress >= 0.995f)
+                    RaceService.OnHorseFinish(this);
+            }
         }
 
         private int _ticksTillSpeedChange;

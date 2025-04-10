@@ -124,7 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537aad1d1b03faf408e87d6ecf4d0a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RaceService: {fileID: 0}
   Animator: {fileID: 2394001423841282017}
+  Collider: {fileID: 0}
   MeshRenderer: {fileID: 2394001423837116705}
   Transform: {fileID: 2394001423831410769}
   CameraFollowPoint: {fileID: 8659990352268405413}

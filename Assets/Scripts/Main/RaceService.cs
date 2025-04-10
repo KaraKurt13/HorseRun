@@ -1,5 +1,7 @@
 using Assets.Scripts.Infrastructure;
 using Assets.Scripts.Objects;
+using Assets.Scripts.UI;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +14,7 @@ namespace Assets.Scripts.Main
 
         public void StartRace();
 
-        public void EndRace();
+        public void OnHorseFinish(Horse horse);
 
         public List<Horse> Horses { get; set; }
 
@@ -21,9 +23,15 @@ namespace Assets.Scripts.Main
 
     public class RaceService : MonoBehaviour, IRaceService
     {
+        public Engine Engine;
+
+        public GameResultsComponent GameResultsComponent;
+
         public Horse SelectedHorse { get; set; }
 
         public List<Horse> Horses { get; set; }
+
+        public Queue<Horse> ResultsQueue { get; private set; } = new();
 
         [SerializeField] private List<Transform> _spawnPoints;
         [SerializeField] private List<Transform> _endingPoints;
@@ -51,6 +59,7 @@ namespace Assets.Scripts.Main
                 var material = _horseMaterials[i];
                 var image = _horseImages[i];
                 var horse = Instantiate(_horsePrefab, spawnPoint, Quaternion.identity).GetComponent<Horse>();
+                horse.RaceService = this;
                 horse.Initialize(endingPoint, spawnPoint, name, material, image);
                 Horses.Add(horse);
             }
@@ -67,9 +76,14 @@ namespace Assets.Scripts.Main
                 horse.Activate();
         }
 
-        public void EndRace()
+        public void OnHorseFinish(Horse horse)
         {
+            horse.Deactivate();
+            if (horse == SelectedHorse)
+                Engine.EndGame();
 
+            ResultsQueue.Enqueue(horse);
+            GameResultsComponent.RefreshResultTable();
         }
     }
 }
